@@ -1,0 +1,93 @@
+body {
+    padding: 0 10%;
+}
+
+.title {
+    font-size: 3em;
+    color: darkblue;
+    text-align: center;
+}
+
+.server {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.server input {
+    width: 300px;
+}
+
+.toolbar {
+    margin: 1em 0;
+}
+
+.toolbar button {
+    font-size: 1.2em;
+}
+
+.funds .active {
+    background-color: lightgreen;
+}
+
+.funds {
+    margin: 1em 0;
+}
+
+.menu {
+    display: none;
+    width: 100px;
+    position: absolute;
+    background: white;
+    border: solid 1px darkgray;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    list-style-type: none;
+    margin: 0.3em 0;
+    padding: 0 1em;
+}
+
+.menu li:hover {
+    background-color: lightgreen;
+}
+
+.dialog {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    border: solid 1px darkgray;
+    background-color: white;
+}
+
+.content span {
+    padding-right:10px;
+    width:10em;
+    display:block;
+    float:left;
+}
+.content input {
+    width:10em;
+}
+.content div {
+    margin: 1em;
+}
+.content .buttons {
+    text-align: center;
+}
+.content button {
+    width: 6em;
+    height: 2em;
+    margin: 1em;
+}

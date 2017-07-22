@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./css/funds.css" type="text/css"/>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/funds.js"></script>
+</head>
+
+<body onload="onLoad()">
+
+<div class="title">
+    Morningstar Fund Management
+</div>
+
+<div class="server">
+    Server: <input type="text" value="http://sz-g35j6h2.morningstar.com:6500/">
+</div>
+
+<div class="toolbar">
+    <button class="get-funds">Get Funds</button>
+    <button class="new-fund">New Fund</button>
+</div>
+
+<div class="funds">
+    <table border="1" cellspacing="0" bordercolor="gray">
+        <tr>
+            <th style="display:none;">id</th>
+            <th width="30">#</th>
+            <th width="100">Fund Name</th>
+            <th width="80">Ticker</th>
+            <th width="80">Currency</th>
+            <th width="120">Portfolio Date</th>
+            <th width="100">Holdings #</th>
+        </tr>
+        <tr v-for="fund in funds" v-on:click="selectRow">
+            <td style="display:none;" class="fid">{{ fund.id }}</td>
+            <td>{{ fund.row }}</td>
+            <td>{{ fund.name }}</td>
+            <td>{{ fund.ticker }}</td>
+            <td>{{ fund.currency }}</td>
+            <td>{{ fund.portfolioDate }}</td>
+            <td>{{ fund.numberOfHoldings }}</td>
+        </tr>
+    </table>
+</div>
+
+<ul class="menu">
+    <li v-on:click="editFund">Edit</li>
+    <li v-on:click="deleteFund">Delete</li>
+</ul>
+
+<div class="dialog">
+    <div class="content">
+        <div>
+            <span>Fund Name</span>
+            <input class="name" v-model="fund.name"></input>
+        </div>
+        <div>
+            <span>Ticker</span>
+            <input class="ticker" v-model="fund.ticker"></input>
+        </div>
+        <div>
+            <span>Currency</span>
+            <input class="currency" v-model="fund.currency"></input>
+        </div>
+        <div>
+            <span>Portfolio Date</span>
+            <input class="portfolio-date" v-model="fund.portfolioDate"></input>
+        </div>
+        <div>
+            <span>Holdings #</span>
+            <input class="holdings-number" v-model="fund.numberOfHoldings"></input>
+        </div>
+        <div>
+            <span>Manager</span>
+            <input class="manager" v-model="fund.manager"></input>
+        </div>
+        <div class="buttons">
+            <button v-on:click="ok">OK</button>
+            <button v-on:click="cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+

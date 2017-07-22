@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ms.jansing.pp.dao.FundDao">
+
+    <sql id="fundColumns">
+        a.id AS "id",
+        a.name AS "name",
+        a.ticker AS "ticker",
+        a.currency AS "currency",
+        a.portfolio_date AS "portfolioDate",
+        a.number_of_holdings AS "numberOfHoldings",
+        a.manager AS "manager",
+        a.valid AS "valid"
+    </sql>
+
+    <sql id="fundJoins">
+    </sql>
+    <select id="get" resultType="Fund">
+        SELECT
+        <include refid="fundColumns"/>
+        FROM fund a
+        <include refid="fundJoins"/>
+        WHERE a.id = #{id} AND a.valid=1
+    </select>
+
+    <select id="findList" resultType="Fund">
+        SELECT
+        <include refid="fundColumns"/>
+        FROM fund a
+        <include refid="fundJoins"/>
+        WHERE a.valid=1
+        ORDER BY a.portfolio_date DESC
+    </select>
+
+    <insert id="insert">
+        INSERT INTO fund(
+        id,
+        name,
+        ticker,
+        currency,
+        portfolio_date,
+        number_of_holdings,
+        manager,
+        valid
+        ) VALUES (
+        #{id},
+        #{name},
+        #{ticker},
+        #{currency},
+        #{portfolioDate},
+        #{numberOfHoldings},
+        #{manager},
+        #{valid}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE fund SET
+        name = #{name},
+        ticker = #{ticker},
+        currency = #{currency},
+        portfolio_date = #{portfolioDate},
+        number_of_holdings = #{numberOfHoldings},
+        manager = #{manager}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE fund SET
+        valid = 0
+        WHERE id = #{id}
+    </update>
+
+</mapper>
